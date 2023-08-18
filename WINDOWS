@@ -1,1 +1,66 @@
+  ** Microsofts Command Breakdown Manual **
+  https://learn.microsoft.com/en-us/powershell/module
+
+Get-Help <command> -examples
+  - Shows examples of how to use a cmdlet
+
+     # Filtering #
+
+... | select-object -property : allows you to list only what you want to see from the ouput of a cmdlet
+  - * allows you to see all property fields available with a cmdlet
+  - comma seperated only shows those fields (name, id, path, etc..)
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-object?view=powershell-7.3
+
+...| where-object -property <object> -<argument> <value>
+  - <argument> are arguments to the value (eq, like, not, match, etc...) {look at link for more}
+  - <value> is the actual value of the object (Object = name then value = name of the object you want)
+https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/where-object?view=powershell-7.3
+
+
+    # Get-Process #
+
+Get-Process <process name> | Select-Object -property <object> 
+  ** Get-Process Explorer | Select-Object -property name, id, path, sessionid **
+
+Get-Process <process name> | Where-Object -property <Object> -<argument> <value>
+  ** Get-Process Explorer | Where-Object -property SessionId -eq 3 *
+
+#Combined Where-Object/Select-Object#
+Get-Process <process name> | Where-Object -property <object> -<argument> <value> | Select-Object -property <object>
+  ** Get-Process Explorer | Where-Object -property SessionId -eq 3 | Select-Object -property name, id, path, sessionid **
+  - Outputs Any Explorer process with a session id of 3 then gives you the name of the process, process id, path its located, and the session id
+
+
+    # Get-Service
+
+Get-Service <service name> | ** Filtering for service **
+  ** Get-Service 'Amazon SSM Agent' | ** Filtering for service **
+
+
+    # Get-Ciminstance #
+
+Get-Ciminstance -Class Win32_process | ** Filtering for process **
+  - Gives more info including the command that was ran from the cmd
+  - For Processes
+
+Get-Ciminstance -Class Win32_service | ** Filtering for process **
+  - Gives more info over the service
+  - For Services.
+
+    ** Get-Childitem/ItemProperty **
+                                                ASEP (Autostart Extensability Point) {Where most reg keys are changed for persistence}
+Used to list items (like ls)
+  - Useful for RegKeys
+Get-Childitem 'HKLM:\Software\wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\'
+
+Used for listing the properties of an item
+Get-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run\'
+
+
+## Groups and Users **
+
+Get-Localusers
+Get-Localgroup
+Get-Localgroupmember <group name>
+
 
