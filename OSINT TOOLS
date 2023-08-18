@@ -1,0 +1,8 @@
+    # OSINT TOOLS #
+crt.sh : used to find not yet publically facing domains
+haveibeenpwned.com : leaks of account usernames/passwords and email
+www.xlek.com : used to search over names, phone numbers, emails, and personal info
+spiderfoot.net : crawls the web to find associated domain names, ips, emails, hardware, hostnames, etc... to a domain name
+www.shodan.io : finds vulns across a network over the open web. Finds IOT devices that could be exploited
+www.network-tools.com : GUI version of enumeration tools
+viewdns.info : query's DNS records
