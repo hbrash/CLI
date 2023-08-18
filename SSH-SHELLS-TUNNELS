@@ -1,0 +1,5 @@
+    ** TUNNELS **
+ssh -J <Jump_ip> -D <port> <End_ip>
+
+  ** XFREERDP **
+ssh -L 127.0.0.1:<port>:<Target_ip>:<port> -J <Jump_ip> <End_ip>
