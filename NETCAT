@@ -1,0 +1,11 @@
+    ## Modes ##
+Client
+  - Connection to a listening services. (UDP/TCP)
+  - stndin -> stndout -> (Just like ssh)
+
+Listen Mode (Server Mode) 
+  - Listens on a port (Just like ssh)
+
+    ## Transfering Data ##
+'nc -l -p <port> <filename'
+  -p : need to be root or only able to use certain ports
