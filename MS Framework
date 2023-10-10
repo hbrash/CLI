@@ -1,0 +1,28 @@
+An exploit takes advantage of a flaw in a target program
+The payload makes the target do something the attacker wants
+Auxiliary modules perform all kinds of tasks, including scanning
+A post module is used in post-exploitation to plunder or manpulate targets
+
+Has Console, CMD, Web, and GUI available
+
+Uses the same help cli command that unix uses
+
+'show options'
+  - shows the config of msfconsole
+
+    ## Sessions ##
+'sessions -l' 
+  - Gives list if active sessions within metasploit
+'sessions -i <session_id>'
+  - Move to a desired session
+'background'
+  - moves a session to the background so that you can interact with other sessions
+
+    ## Meterpreter ##
+Command and Control Framwork
+Allows an attacker to interact with the target directly with full user abilities
+
+'shell'
+  - brings a shell up from the host system
+'migrate -N <Process>'
+  - moves your instance into a process. process injection
