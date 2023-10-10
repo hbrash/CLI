@@ -7,10 +7,24 @@ Has Console, CMD, Web, and GUI available
 
 Uses the same help cli command that unix uses
 
+    ## MSFCONSOLE FILE SETUP ##
+    /opt/metasploit-framework/embedded/framework/modules/
+Auxilary's: Supporting modules such as scanners, crawlers, and fuzzers
+Encoders: Types of encoders to throw off anti-virus detection of a payload
+Evasions: Evasions try to evade anti-virus scanners. More of hide and seek than Encoders
+Exploits: The type of exploits racked and stacked by target systems
+NOPS: Non OPerational, used to keep the payload sizes correct so the proccessors don't freak out running payloads
+Payloads: What will be ran on the target. Exploits leverage the system and the payload's actually affect the system
+    - Adapters: An adapter wraps single payloads to convert them into different formats. For example, a normal single payload can be wrapped inside a Powershell adapter, which will make a single powershell command that will execute the payload.
+    - Singles: Self-contained payloads (add user, launch notepad.exe, etc.) that do not need to download an additional component to run.
+    - Stagers: Responsible for setting up a connection channel between Metasploit and the target system. Useful when working with staged payloads. “Staged payloads” will first upload a stager on the target system then download the rest of the payload (stage). This provides some advantages as the initial size of the payload will be relatively small compared to the full payload sent at once.
+    - Stages: Downloaded by the stager. This will allow you to use larger sized payloads.
+Post: Used after post effects of the payload
+
 'show options'
   - shows the config of msfconsole
 
-    ## Sessions ##
+    ## SESSIONS ##
 'sessions -l' 
   - Gives list if active sessions within metasploit
 'sessions -i <session_id>'
@@ -18,7 +32,7 @@ Uses the same help cli command that unix uses
 'background'
   - moves a session to the background so that you can interact with other sessions
 
-    ## Meterpreter ##
+    ## METERPRETER ##
 Command and Control Framwork
 Allows an attacker to interact with the target directly with full user abilities
 
