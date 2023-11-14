@@ -1,0 +1,39 @@
+    ---- SERVER-SIDE REQUEST FORGERY ----
+
+Application accepts a URL from a user. Server requests the content from another server requested from the user. Utilizes that transaction to recieve more data than what should be given.
+
+Ex.
+Regular request:
+  login.falsimentis.com/?f=Twitter&logo=https://cdn.cdnlogos/t/29/twitter.svg
+    - normal Twitter login page for the company falsimentis
+SSRF:
+  login.falsimentis.com/?=Twitter&logo=file:///etc/hosts
+    - Calling for a request for of the /etc/hosts file on the server
+
+
+---- UTILIZING cURL ----  
+
+Command line URL utility (cURL)
+
+'curl "https://login.falsimentis.com/?=Twitter&logo=file:///etc/hosts"'
+  - if normal users can see the file, then the output will return in terminal
+
+
+  ---- Instance Metadata Service (IMDS) ----
+
+In cloud systems, a IMDS "server" is running along the physical server. IMDS is a virtual server
+  - 169.254.169.254 is the ip. Only accessible from the the local machine.
+
+AWS is vulnerable if its using IMDSv1 not IMDSv2
+  - IMDSv2 is not set as default
+
+  ---- EXTRA INFO ----
+
+Cloud systems aren't made for multi user setups
+  - /etc/shadow will not give the best info
+  - Look for /var/www/html/auth.config.js
+
+Cloud systems normally run everything as root
+  - Creds are often stored as environment variables
+  - On Linux, accessible in /proc/NNN/environ or /etc/environment
+  - NNN is the process id. Note: Probaly have to guess the id
